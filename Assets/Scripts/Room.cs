@@ -5,16 +5,16 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     public GameObject[] neighboringRooms;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    //use this as a base to set next values for the rules
+    Node GetNodeAtPosition(Vector2 pos)
     {
-        
+        GameObject tile = GameObject.Find("Game").GetComponent<GameBoard>().board[(int)pos.x, (int)pos.y];
+
+        if (tile != null)
+        {
+            return tile.GetComponent<Node>();
+        }
+        return null;
     }
 }
